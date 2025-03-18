@@ -13,13 +13,20 @@ let gameOn = true;
 
 const alphabetWord = "qwertyuiopasdfghjklzxcvbnm";
 const letterList = alphabetWord.split('');
+
 let lives = 6;
 let currentGuess = 0;
+let guessLetter = 0;
 
 let word;
 let wordArray;
+
+let guessWord = "";
 let guessArray = [];
-let guessLetter = 0;
+
+let displayWordArray = [];
+
+let rotateDegree = 0;
 
 function chooseWord() {
     let num = Math.floor(Math.random() * wordList.length);
@@ -74,12 +81,15 @@ function guess(input) {
             guessLetter--;
             document.getElementById(`${currentGuess}:${guessLetter}`).innerHTML = "";
             guessArray.pop();
-        } else if (input === "enter" && guessLetter === 5) {
+        }
+        else if (input === "enter" && guessLetter === 5) {
             wordCheck();
-        } else if (input !== "enter" && input && guessLetter < 5 && input !== "backspace") {
+        }
+        else if (input !== "enter" && input && guessLetter < 5 && input !== "backspace") {
             document.getElementById(`${currentGuess}:${guessLetter}`).innerHTML = input.toUpperCase();
             guessArray[guessLetter] = input;
             guessLetter++;
+            guessWord += input;
         }
         // Update the caret position after processing input
         updateCaret();
@@ -87,13 +97,49 @@ function guess(input) {
 }
 
 function wordCheck() {
+    displayWordArray = [];
+    for (let i = 0; i < guessArray.length; i++){
+        let letter = guessArray[i];
+        let countLetter = 0;
+
+        for (let j = 0; j < wordArray.length; j++){
+            if (letter == wordArray[j]){
+                countLetter++;
+                // console.log(countLetter);
+            }
+        }
+
+        for (let k = 0; k < displayWordArray.length; k++) {
+            if (letter == displayWordArray[k]) {
+                countLetter--;
+                // console.log(countLetter);
+            }
+        }
+
+        if (countLetter > 0 && letter == wordArray[i]){
+            document.getElementById(`${currentGuess}:${i}`).style.color = "green";
+        }
+
+        else if (countLetter > 0 && wordArray.includes(letter)) {
+            document.getElementById(`${currentGuess}:${i}`).style.color = "yellow";
+        }
+        else{
+            document.getElementById(`${currentGuess}:${i}`).style.color = "red";
+        }
+
+        displayWordArray[i] = letter;
+    }
+
     if (guessArray.toString() === wordArray.toString()) {
         console.log("You got the word right");
         gameOn = false;
-    } else if (currentGuess == lives) {
+    }
+    else if (currentGuess == lives) {
         console.log("Sorry, the word was " + word);
         gameOn = false;
-    } else {
+    }
+
+    else {
         guessArray = [];
         currentGuess++;
         guessLetter = 0;
