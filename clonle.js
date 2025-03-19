@@ -18,8 +18,8 @@ let lives = 6;
 let currentGuess = 0;
 let guessLetter = 0;
 
-let word;
-let wordArray;
+let word = "";
+let wordArray = [];
 
 let guessWord = "";
 let guessArray = [];
@@ -35,22 +35,34 @@ function chooseWord() {
 }
 
 window.onload = function () {
+    // Attach keyup event listener ONCE when the page loads
+    document.addEventListener("keyup", (e) => {
+        if (!gameOn) return; // Ignore input if the game is over
+
+        const key = e.key.toLowerCase();
+        const isLetter = isChar(key);
+        guess(isLetter); // Passes valid letters to the guess function
+    });
+
+    startGame(); // Start the game
+};
+
+function startGame() {
+    if (!gameOn) return;
+
     waitForWordList(() => {
         chooseWord();
         console.log("Selected word:", word);
         console.log("Word array:", wordArray);
 
-        const body = document.getElementById("body");
-        body.addEventListener("keyup", (e) => {
-            const key = e.key.toLowerCase();
-            const isLetter = isChar(key);
-            guess(isLetter);
-        });
+        lives = 6;
+        guessWord = "";
+        guessArray = [];
+        displayWordArray = Array(wordArray.length).fill("_");
 
-        // Initialize the caret position
         updateCaret();
     });
-};
+}
 
 function isChar(k) {
     k = k.toLowerCase();
@@ -97,13 +109,13 @@ function guess(input) {
 }
 
 function wordCheck() {
-    displayWordArray = [];
-    for (let i = 0; i < guessArray.length; i++){
+    displayWordArray = Array(wordArray.length).fill("_");
+    for (let i = 0; i < guessArray.length; i++) {
         let letter = guessArray[i];
         let countLetter = 0;
 
-        for (let j = 0; j < wordArray.length; j++){
-            if (letter == wordArray[j]){
+        for (let j = 0; j < wordArray.length; j++) {
+            if (letter == wordArray[j]) {
                 countLetter++;
                 // console.log(countLetter);
             }
@@ -116,14 +128,14 @@ function wordCheck() {
             }
         }
 
-        if (countLetter > 0 && letter == wordArray[i]){
+        if (countLetter > 0 && letter == wordArray[i]) {
             document.getElementById(`${currentGuess}:${i}`).style.color = "green";
         }
 
         else if (countLetter > 0 && wordArray.includes(letter)) {
             document.getElementById(`${currentGuess}:${i}`).style.color = "yellow";
         }
-        else{
+        else {
             document.getElementById(`${currentGuess}:${i}`).style.color = "red";
         }
 
