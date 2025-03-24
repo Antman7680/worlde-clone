@@ -13,8 +13,14 @@ table {
     max-width: 500px;
     /* Adjust this as needed */
     margin: 5% auto;
-        /* Instead of 20% */
     /* Centers the table */
+}
+
+div {
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: #EAEAEA;
+    background-color: transparent;
 }
 
 .letter {
@@ -33,10 +39,6 @@ table {
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
 
-    color: #EAEAEA;
-}
-
-.letter {
     color: #EAEAEA;
     background-color: transparent;
     /* Keeps background clean */
@@ -84,50 +86,4 @@ table {
         height: 40px;
         font-size: 1.2rem;
     }
-}
-
-#keyboard {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 5px;
-    max-width: 600px;
-    margin: auto;
-    justify-content: center;
-}
-
-.key,
-.backspace,
-.enter {
-    padding: 10px;
-    text-align: center;
-    font-size: 20px;
-    background-color: #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.2s;
-    font-family: 'Poppins', sans-serif;
-}
-
-.spacer {
-    grid-column: span 1;
-    /* Large spacer */
-}
-
-.spacer-half {
-    grid-column: span 0.5;
-    /* Small spacer */
-}
-
-.backspace {
-    grid-column: span 2;
-    /* Backspace now properly spaced */
-    background-color: red;
-    color: white;
-}
-
-.enter {
-    grid-column: span 2;
-    /* Enter aligned properly */
-    background-color: green;
-    color: white;
 }
