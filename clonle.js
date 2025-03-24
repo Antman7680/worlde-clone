@@ -43,21 +43,6 @@ window.onload = function () {
         const isLetter = isChar(key);
         guess(isLetter); // Passes valid letters to the guess function
     });
-    document.querySelectorAll(".key").forEach(key => {
-        key.addEventListener("click", () => {
-            guess(key.innerText.toLowerCase()); // Call your guess function
-        });
-    });
-
-    const backspaceKey = document.querySelector(".backspace");
-    if (backspaceKey) {
-        backspaceKey.addEventListener("click", () => guess("backspace"));
-    }
-
-    const enterKey = document.querySelector(".enter");
-    if (enterKey) {
-        enterKey.addEventListener("click", () => guess("enter"));
-    }
 
     startGame(); // Start the game
 };
@@ -124,7 +109,7 @@ function guess(input) {
 }
 
 function wordCheck() {
-    displayWordArray = [];
+    displayWordArray = Array(wordArray.length).fill("_");
     for (let i = 0; i < guessArray.length; i++) {
         let letter = guessArray[i];
         let countLetter = 0;
@@ -132,29 +117,26 @@ function wordCheck() {
         for (let j = 0; j < wordArray.length; j++) {
             if (letter == wordArray[j]) {
                 countLetter++;
+                // console.log(countLetter);
             }
         }
 
         for (let k = 0; k < displayWordArray.length; k++) {
             if (letter == displayWordArray[k]) {
                 countLetter--;
+                // console.log(countLetter);
             }
         }
 
-        let cell = document.getElementById(`${currentGuess}:${i}`);
-        let keyElement = document.querySelector(`.key[data-key="${letter}"]`); // Find the corresponding key
-
         if (countLetter > 0 && letter == wordArray[i]) {
-            cell.style.color = "green";
-            if (keyElement) keyElement.style.backgroundColor = "green"; // Update keyboard color
+            document.getElementById(`${currentGuess}:${i}`).style.color = "green";
         }
+
         else if (countLetter > 0 && wordArray.includes(letter)) {
-            cell.style.color = "yellow";
-            if (keyElement) keyElement.style.backgroundColor = "yellow";
+            document.getElementById(`${currentGuess}:${i}`).style.color = "yellow";
         }
         else {
-            cell.style.color = "red";
-            if (keyElement) keyElement.style.backgroundColor = "gray"; // Gray for incorrect letters
+            document.getElementById(`${currentGuess}:${i}`).style.color = "red";
         }
 
         displayWordArray[i] = letter;
@@ -168,10 +150,15 @@ function wordCheck() {
         console.log("Sorry, the word was " + word);
         gameOn = false;
     }
+
     else {
         guessArray = [];
         currentGuess++;
         guessLetter = 0;
-        updateCaret();
+        updateCaret(); // Ensure caret moves to the next row
     }
+    if (wordList.includes(guessWord)===true){
+        console.log("Is word");
+    }
+    console.log(guessWord);
 }
