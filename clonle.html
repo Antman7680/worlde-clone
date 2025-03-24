@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,86 +13,71 @@
 </head>
 
 <body id="body">
-    <table>
-        <tr id="0">
-            <td class="letter" id="0:0"></td>
-            <td class="letter" id="0:1"></td>
-            <td class="letter" id="0:2"></td>
-            <td class="letter" id="0:3"></td>
-            <td class="letter" id="0:4"></td>
-        </tr>
-        <tr id="1">
-            <td class="letter" id="1:0"></td>
-            <td class="letter" id="1:1"></td>
-            <td class="letter" id="1:2"></td>
-            <td class="letter" id="1:3"></td>
-            <td class="letter" id="1:4"></td>
-        </tr>
-        <tr id="2">
-            <td class="letter" id="2:0"></td>
-            <td class="letter" id="2:1"></td>
-            <td class="letter" id="2:2"></td>
-            <td class="letter" id="2:3"></td>
-            <td class="letter" id="2:4"></td>
-        </tr>
-        <tr id="3">
-            <td class="letter" id="3:0"></td>
-            <td class="letter" id="3:1"></td>
-            <td class="letter" id="3:2"></td>
-            <td class="letter" id="3:3"></td>
-            <td class="letter" id="3:4"></td>
-        </tr>
-        <tr id="4"> <!-- Fixed the incorrect ID -->
-            <td class="letter" id="4:0"></td>
-            <td class="letter" id="4:1"></td>
-            <td class="letter" id="4:2"></td>
-            <td class="letter" id="4:3"></td>
-            <td class="letter" id="4:4"></td>
-        </tr>
-        <tr id="5">
-            <td class="letter" id="5:0"></td>
-            <td class="letter" id="5:1"></td>
-            <td class="letter" id="5:2"></td>
-            <td class="letter" id="5:3"></td>
-            <td class="letter" id="5:4"></td>
-        </tr>
+    <div id="rulesArea">Rules:</div>
+
+    <div id="guessArea">
+        <table>
+            <tr id="0">
+                <td class="letter" id="0:0"></td>
+                <td class="letter" id="0:1"></td>
+                <td class="letter" id="0:2"></td>
+                <td class="letter" id="0:3"></td>
+                <td class="letter" id="0:4"></td>
+            </tr>
+            <tr id="1">
+                <td class="letter" id="1:0"></td>
+                <td class="letter" id="1:1"></td>
+                <td class="letter" id="1:2"></td>
+                <td class="letter" id="1:3"></td>
+                <td class="letter" id="1:4"></td>
+            </tr>
+            <tr id="2">
+                <td class="letter" id="2:0"></td>
+                <td class="letter" id="2:1"></td>
+                <td class="letter" id="2:2"></td>
+                <td class="letter" id="2:3"></td>
+                <td class="letter" id="2:4"></td>
+            </tr>
+            <tr id="3">
+                <td class="letter" id="3:0"></td>
+                <td class="letter" id="3:1"></td>
+                <td class="letter" id="3:2"></td>
+                <td class="letter" id="3:3"></td>
+                <td class="letter" id="3:4"></td>
+            </tr>
+            <tr id="4"> <!-- Fixed the incorrect ID -->
+                <td class="letter" id="4:0"></td>
+                <td class="letter" id="4:1"></td>
+                <td class="letter" id="4:2"></td>
+                <td class="letter" id="4:3"></td>
+                <td class="letter" id="4:4"></td>
+            </tr>
+            <tr id="5">
+                <td class="letter" id="5:0"></td>
+                <td class="letter" id="5:1"></td>
+                <td class="letter" id="5:2"></td>
+                <td class="letter" id="5:3"></td>
+                <td class="letter" id="5:4"></td>
+            </tr>
     </table>
-    <div id="keyboard">
-        <!-- First Row -->
-        <div class="key" data-key="q">Q</div>
-        <div class="key" data-key="w">W</div>
-        <div class="key" data-key="e">E</div>
-        <div class="key" data-key="r">R</div>
-        <div class="key" data-key="t">T</div>
-        <div class="key" data-key="y">Y</div>
-        <div class="key" data-key="u">U</div>
-        <div class="key" data-key="i">I</div>
-        <div class="key" data-key="o">O</div>
-        <div class="key" data-key="p">P</div>
-        <div class="backspace">Backspace</div>
+    </div>
 
-        <!-- Second Row -->
-        <div class="spacer-half"></div> <!-- Small Spacer -->
-        <div class="key" data-key="a">A</div>
-        <div class="key" data-key="s">S</div>
-        <div class="key" data-key="d">D</div>
-        <div class="key" data-key="f">F</div>
-        <div class="key" data-key="g">G</div>
-        <div class="key" data-key="h">H</div>
-        <div class="key" data-key="j">J</div>
-        <div class="key" data-key="k">K</div>
-        <div class="key" data-key="l">L</div>
-        <div class="enter">Enter</div>
+    <div id="pastGuessesArea">
+        <table>
+            <tr>
+                <td>Correct Guesses: <span></span></td>
+            </tr>
+            <tr>
+                <td>Letters in the Word: <span></span></td>
+            </tr>
+            <tr>
+                <td>Incorrect Guesses: <span></span></td>
+            </tr>
+        </table>
+    </div>
 
-        <!-- Third Row -->
-        <div class="spacer"></div> <!-- Larger Spacer for alignment -->
-        <div class="key" data-key="z">Z</div>
-        <div class="key" data-key="x">X</div>
-        <div class="key" data-key="c">C</div>
-        <div class="key" data-key="v">V</div>
-        <div class="key" data-key="b">B</div>
-        <div class="key" data-key="n">N</div>
-        <div class="key" data-key="m">M</div>
+    <div id="restarButton">
+        <button></button>
     </div>
 
     <script src="wordList.js"></script>
