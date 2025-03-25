@@ -13,7 +13,26 @@
 </head>
 
 <body id="body">
-    <div id="rulesArea">Rules:</div>
+    <div id="rulesArea">
+        <h2>Rules:</h2>
+        <p>
+            Hello, and thank you for checking out <em>Clonele</em>, my own version of Wordle!
+            Here’s how it works:
+        </p>
+        
+        <ul>
+            <li><span style="color: green; font-weight: bold;">Green</span>: The letter is in the word and in the correct
+                position.</li>
+            <li><span style="color: goldenrod; font-weight: bold;">Yellow</span>: The letter is in the word but in the wrong
+                position.</li>
+            <li><span style="color: red; font-weight: bold;">Red</span>: The letter is not in the word.</li>
+        </ul>
+        
+        <p>
+            The tracker on the right will help you keep track of the letters you’ve used and their status.
+            Have fun! Win or lose, feel free to try again by pressing <strong>New Game</strong> below!
+        </p>
+    </div>
 
     <div id="guessArea">
         <table>
@@ -59,7 +78,7 @@
                 <td class="letter" id="5:3"></td>
                 <td class="letter" id="5:4"></td>
             </tr>
-    </table>
+        </table>
     </div>
 
     <div id="pastGuessesArea">
@@ -77,7 +96,8 @@
     </div>
 
     <div id="restarButton">
-        <button></button>
+        <button>New Game</button>
+        <div id="finalMessage"></div>
     </div>
 
     <script src="wordList.js"></script>
