@@ -19,15 +19,17 @@
             Hello, and thank you for checking out <em>Clonele</em>, my own version of Wordle!
             Here’s how it works:
         </p>
-        
+
         <ul>
-            <li><span style="color: green; font-weight: bold;">Green</span>: The letter is in the word and in the correct
+            <li><span style="color: green; font-weight: bold;">Green</span>: The letter is in the word and in the
+                correct
                 position.</li>
-            <li><span style="color: goldenrod; font-weight: bold;">Yellow</span>: The letter is in the word but in the wrong
+            <li><span style="color: goldenrod; font-weight: bold;">Yellow</span>: The letter is in the word but in the
+                wrong
                 position.</li>
             <li><span style="color: red; font-weight: bold;">Red</span>: The letter is not in the word.</li>
         </ul>
-        
+
         <p>
             The tracker on the right will help you keep track of the letters you’ve used and their status.
             Have fun! Win or lose, feel free to try again by pressing <strong>New Game</strong> below!
@@ -84,19 +86,28 @@
     <div id="pastGuessesArea">
         <table>
             <tr>
-                <td>Correct Guesses: <span></span></td>
+                <td>
+                    <h2>Correct Guesses:</h2>
+                    <span></span>
+                </td>
             </tr>
             <tr>
-                <td>Letters in the Word: <span></span></td>
+                <td>
+                    <h2>Letters in the Words:</h2>
+                    <span></span>
+                </td>
             </tr>
             <tr>
-                <td>Incorrect Guesses: <span></span></td>
+                <td>
+                    <h2>Incorrect Guesses:</h2>
+                    <span></span>
+                </td>
             </tr>
         </table>
     </div>
 
     <div id="restarButton">
-        <button>New Game</button>
+        <button onclick="startGame()">New Game</button>
         <div id="finalMessage"></div>
     </div>
 
