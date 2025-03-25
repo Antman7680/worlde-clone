@@ -13,6 +13,7 @@ let gameOn = true;
 
 const alphabetWord = "qwertyuiopasdfghjklzxcvbnm";
 const letterList = alphabetWord.split('');
+let usedLetterList = letterList;
 
 let lives = 6;
 let currentGuess = 0;
@@ -26,7 +27,9 @@ let guessArray = [];
 
 let displayWordArray = [];
 
-let rotateDegree = 0;
+let correctLetters = [];
+let semiCorrectLetters = [];
+let incorrectLetter = [];
 
 function chooseWord() {
     let num = Math.floor(Math.random() * wordList.length);
@@ -157,7 +160,7 @@ function wordCheck() {
         guessLetter = 0;
         updateCaret(); // Ensure caret moves to the next row
     }
-    if (wordList.includes(guessWord)===true){
+    if (wordList.includes(guessWord) === true) {
         console.log("Is word");
     }
     console.log(guessWord);
