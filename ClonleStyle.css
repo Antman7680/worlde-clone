@@ -1,21 +1,50 @@
+/* Dark Theme */
 body {
     background-color: #121212;
+    display: grid;
+    grid-template-areas:
+        "rules guesses past-guesses"
+        "restart restart restart";
+    grid-template-columns: 1fr 1fr 1fr;
+    /* Ensures equal layout */
+    gap: 20px;
+    /* Adds space between sections */
+    padding: 20px;
+    justify-items: center;
+    /* Ensures proper centering */
 }
 
+/* Assigning Grid Areas */
+#rulesArea {
+    grid-area: rules;
+}
+
+#guessArea {
+    grid-area: guesses;
+}
+
+#pastGuessesArea {
+    grid-area: past-guesses;
+}
+
+#restarButton {
+    grid-area: restart;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Table Styling */
 table {
     border-collapse: collapse;
-    border-collapse: separate;
     border-spacing: 10px;
-    /* Space between cells */
-    /* Adjust the spacing as needed */
-    /* Ensures borders are clean and don't double up */
     width: 100%;
     max-width: 500px;
-    /* Adjust this as needed */
     margin: 5% auto;
-    /* Centers the table */
 }
 
+/* General Text Styling */
 div {
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
@@ -23,34 +52,28 @@ div {
     background-color: transparent;
 }
 
+/* Letter Styling */
 .letter {
     text-align: center;
     width: 50px;
-    /* Fixed width for consistency */
     height: 50px;
-
     border: 2px solid #EAEAEA;
     border-radius: 5px;
-
     padding: 5px;
     font-size: 1.5rem;
-    /* Adjust text size for visibility */
-
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
-
     color: #EAEAEA;
     background-color: transparent;
-    /* Keeps background clean */
     transition: color 0.2s ease-in-out;
 }
 
 /* When a letter is added */
 .letter.filled {
     color: white;
-    /* Adjusted for better contrast */
 }
 
+/* Blinking Cursor Animation */
 @keyframes caret-blink {
 
     0%,
@@ -63,22 +86,28 @@ div {
     }
 }
 
-/* Apply the blinking animation to elements with the 'caret' class */
 .caret {
     display: inline-block;
     width: 3px;
-    /* Thicker for visibility */
     height: 1.5rem;
-    /* Match text height */
     background-color: #EAEAEA;
-    /* Visible against dark background */
     animation: caret-blink 1s step-end infinite;
 }
 
+/* Responsive Design */
 @media (max-width: 600px) {
+    body {
+        grid-template-areas:
+            "rules"
+            "guesses"
+            "past-guesses"
+            "restart";
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
     table {
         max-width: 90%;
-        /* Keeps it responsive */
     }
 
     .letter {
@@ -86,4 +115,27 @@ div {
         height: 40px;
         font-size: 1.2rem;
     }
+}
+
+/* Restart Button */
+button {
+    text-align: center;
+    width: 9em;
+    height: 4em;
+    border: 2px solid #EAEAEA;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: #EAEAEA;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #222;
+    background-color: #FFD700;
+    border-color: #FFD700;
 }
