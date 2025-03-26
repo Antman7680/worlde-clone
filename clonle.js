@@ -91,7 +91,7 @@ function reset(){
 
     displayWordArray = [];
 
-    correctLetters = [];
+    document.getElementById(`correctLetters`).innerHTML = "";
     semiCorrectLetters = [];
     incorrectLetter = [];
 }
@@ -144,6 +144,7 @@ function wordCheck() {
         displayWordArray = Array(wordArray.length).fill("_");
         for (let i = 0; i < guessArray.length; i++) {
             let letter = guessArray[i];
+            let indexOfLetter = usedLetterList.indexOf(letter);
             let countLetter = 0;
 
             for (let j = 0; j < wordArray.length; j++) {
@@ -161,16 +162,46 @@ function wordCheck() {
             }
 
             if (countLetter > 0 && letter == wordArray[i]) {
-                document.getElementById(`${currentGuess}:${i}`).style.color = "green";
+                document.getElementById(`${currentGuess}:${i}`).style.color = "green"
+
+                if (indexOfLetter!=-1){
+                    const para = document.createElement("p");
+                    const letterDisplay = document.createTextNode(letter);
+                    para.appendChild(letterDisplay);
+                    const element = document.getElementById("correctLetters");
+                    element.appendChild(para);
+
+                    usedLetterList.splice(indexOfLetter, indexOfLetter + 1);
+                }
+
             }
 
             else if (countLetter > 0 && wordArray.includes(letter)) {
                 document.getElementById(`${currentGuess}:${i}`).style.color = "yellow";
+
+                if (indexOfLetter != -1) {
+                    const para = document.createElement("p");
+                    const letterDisplay = document.createTextNode(letter);
+                    para.appendChild(letterDisplay);
+                    const element = document.getElementById("litw");
+                    element.appendChild(para);
+
+                    usedLetterList.splice(indexOfLetter, indexOfLetter + 1);
+                }
             }
             else {
                 document.getElementById(`${currentGuess}:${i}`).style.color = "red";
-            }
 
+                if (indexOfLetter != -1) {
+                    const para = document.createElement("p");
+                    const letterDisplay = document.createTextNode(letter);
+                    para.appendChild(letterDisplay);
+                    const element = document.getElementById("incorrectLetters");
+                    element.appendChild(para);
+
+                    usedLetterList.splice(indexOfLetter, indexOfLetter + 1);
+                }
+            }
             displayWordArray[i] = letter;
         }
 
