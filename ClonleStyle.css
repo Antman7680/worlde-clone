@@ -1,0 +1,141 @@
+/* Dark Theme */
+body {
+    background-color: #121212;
+    display: grid;
+    grid-template-areas:
+        "rules guesses past-guesses"
+        "restart restart restart";
+    grid-template-columns: 1fr 1fr 1fr;
+    /* Ensures equal layout */
+    gap: 20px;
+    /* Adds space between sections */
+    padding: 20px;
+    justify-items: center;
+    /* Ensures proper centering */
+}
+
+/* Assigning Grid Areas */
+#rulesArea {
+    grid-area: rules;
+}
+
+#guessArea {
+    grid-area: guesses;
+}
+
+#pastGuessesArea {
+    grid-area: past-guesses;
+}
+
+#restarButton {
+    grid-area: restart;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Table Styling */
+table {
+    border-collapse: collapse;
+    border-spacing: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 5% auto;
+}
+
+/* General Text Styling */
+div {
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: #EAEAEA;
+    background-color: transparent;
+}
+
+/* Letter Styling */
+.letter {
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #EAEAEA;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: #EAEAEA;
+    background-color: transparent;
+    transition: color 0.2s ease-in-out;
+}
+
+/* When a letter is added */
+.letter.filled {
+    color: white;
+}
+
+/* Blinking Cursor Animation */
+@keyframes caret-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.caret {
+    display: inline-block;
+    width: 3px;
+    height: 1.5rem;
+    background-color: #EAEAEA;
+    animation: caret-blink 1s step-end infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        grid-template-areas:
+            "rules"
+            "guesses"
+            "past-guesses"
+            "restart";
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    table {
+        max-width: 90%;
+    }
+
+    .letter {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Restart Button */
+button {
+    text-align: center;
+    width: 9em;
+    height: 4em;
+    border: 2px solid #EAEAEA;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: #EAEAEA;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #222;
+    background-color: #FFD700;
+    border-color: #FFD700;
+}
